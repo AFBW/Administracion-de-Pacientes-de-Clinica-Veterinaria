@@ -1,26 +1,49 @@
+const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
+    const { nombre, propietario, email, fecha, sintomas, id } = paciente
 
+    const handleEliminar = () => {
+        const respuesta = confirm('Deseas eliminar este paciente?');
 
-const Paciente = () => {
+        if(respuesta) {
+            eliminarPaciente(id)
+        }
+    }
+
     return (
-        <div className="bg-white shadow-md  mx-5 my-10 px-5 py-10 rounded-xl">
-
-            <p className="font-bold mb-3 text-gray-700 uppercase">
-                Nombre: {" "}
-                <span className=" font-normal normal-case">Alpha</span>
-            </p>
-            <p className="font-bold mb-3 text-gray-700 uppercase">
-                Email: {" "}
-                <span className=" font-normal normal-case">correo@correo.com</span>
-            </p>
-            <p className="font-bold mb-3 text-gray-700 uppercase">
-                Fecha Alta: {" "}
-                <span className=" font-normal normal-case">10 Diciembre 2022</span>
-            </p>
-            <p className="font-bold mb-3 text-gray-700 uppercase">
-                Sintomas: {" "}
-                <span className=" font-normal normal-case">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit suscipit nam numquam voluptates? Placeat mollitia vitae incidunt distinctio? Tenetur nemo non tempore! Esse consequuntur laborum possimus ratione, blanditiis hic necessitatibus?</span>
+        <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
+            <p className="font-bold mb-3 text-gray-700 uppercase">Nombre: {''}
+                <span className="font-normal normal-case">{nombre}</span>
             </p>
 
+            <p className="font-bold mb-3 text-gray-700 uppercase">Propietario: {''}
+                <span className="font-normal normal-case">{propietario}</span>
+            </p>
+
+            <p className="font-bold mb-3 text-gray-700 uppercase">Email: {''}
+                <span className="font-normal normal-case">{email}</span>
+            </p>
+
+            <p className="font-bold mb-3 text-gray-700 uppercase">Fecha Alta: {''}
+                <span className="font-normal normal-case">{fecha}</span>
+            </p>
+
+            <p className="font-bold mb-3 text-gray-700 uppercase">Síntomas: {''}
+                <span className="font-normal normal-case">{sintomas}</span>
+            </p>
+
+            <div className="flex justify-between mt-10">
+                <button 
+                    type="button"
+                    className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+                    onClick={() => setPaciente(paciente)}
+                >Editar</button>
+
+                <button 
+                    type="button"
+                    className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+                    onClick={handleEliminar}
+                >Eliminar</button>
+            </div>
         </div>
     )
 }
